@@ -1,12 +1,12 @@
-CREATE TABLE sponsor (
-    id_team serial ,
-    id_team_1 serial,
-    datetine date,
+CREATE TABLE playAgainst (
+    id_firstTeam serial ,
+    id_secondTeam serial,
+    datetime date,
     stadium varchar,
-    constraint fk_team
-        foreign key id_team
+    constraint fk_firstTeam
+        foreign key id_firstTeam
             references team(id_team)
-    constraint fk_team
-        foreign key id_team_1
-            references team(id_team_1)
+    constraint fk_secondTeam
+        foreign key id_secondTeam
+            references team(id_team)
 )
