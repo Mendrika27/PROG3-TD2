@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Data
 @Builder
@@ -18,5 +20,5 @@ public class SponsorEntity {
     private String name;
     @ManyToMany
     @JoinColumn(name = "team_id")
-    private TeamEntity team;
+    private List<TeamEntity> team;
 }

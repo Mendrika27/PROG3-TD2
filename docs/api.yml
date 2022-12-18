@@ -173,8 +173,8 @@ paths:
      get:
         tags:
           - Sponsors
-        summary: get all sponsor
-        operationId: getSponsor
+        summary: get all sponsors
+        operationId: getSponsors
         responses:
           '200':
             description: List of sponsors
@@ -253,6 +253,90 @@ paths:
                     $ref: '#/components/schemas/Sponsor'
             '500':
               description: Internal server error
+  /matches:
+    get:
+      tags:
+        - Matches
+      summary: get all matches
+      operationId: getMatches
+      responses:
+        '200':
+          description: List of matches
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Match'
+        '500':
+          description: Internal server error
+    post:
+      tags:
+        - Matches
+      summary: create new Matches
+      operationId: createMatches
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/CreateMatch'
+      responses:
+        '200':
+          description: List of created matches
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Match'
+        '500':
+          description: Internal server error
+    put:
+      tags:
+        - Matches
+      summary: update some matches
+      operationId: updateMatches
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/UpdateMatches'
+      responses:
+        '200':
+          description: List of updated matches
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Match'
+        '500':
+          description: Internal server error
+  /match/{matchId}:
+    delete:
+      tags:
+        - Matches
+      summary: delete a specific match
+      operationId: deleteMatch
+      parameters:
+        - in: path
+          name: player
+          schema:
+            type: integer
+          required: true
+      responses:
+        '200':
+          description: Return the deleted match
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Match'
+        '500':
+          description: Internal server error
 components:
   schemas:
     Team:
@@ -302,4 +386,18 @@ components:
       type: object
       properties:
         name:
+          type: string
+    Match:
+      type: object
+      allOf:
+        - $ref: "/components/schemas/UpdateMatch"
+    UpdateMatch:
+      allOf :
+        - $ref: "/components/schemas/CreateMatch"
+    CreateMatch:
+      type: object
+      properties:
+        dateTime:
+          type: string
+        stadium:
           type: string

@@ -6,20 +6,23 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+
 @Entity
 @Data
-@Table(name = "player")
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class PlayerEntity {
+public class PlayAgainstEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String name;
-    @Column(nullable = true)
-    private int number;
-    @ManyToOne
-    @JoinColumn(name = "team_entity_id")
-    private TeamEntity teamEntity;
+    private Date dateTime;
+    private String stadium;
+    @OneToOne
+    @JoinColumn(name = "first_team_id")
+    private TeamEntity firstTeam;
+    @OneToOne
+    @JoinColumn(name = "second_team_id", referencedColumnName = "opponent")
+    private TeamEntity secondTeam;
 }

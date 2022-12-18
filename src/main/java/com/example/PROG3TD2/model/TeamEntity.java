@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -26,4 +28,8 @@ public class TeamEntity {
     @ManyToMany
     @JoinColumn(name = "sponsor_id")
     private SponsorEntity sponsor;
+    @OneToOne
+    @JoinColumn(name = "opponent_id")
+    @Column(name = "opponent")
+    private TeamEntity opponent;
 }
