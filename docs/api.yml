@@ -1,6 +1,7 @@
 openapi: 3.0.0
 servers:
-  - url:
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/MENDRIKAHARIZO_1/PROG3_TD2/1.0.0
 info:
   version: 3.0.1
   title: PROG3 - TD2
@@ -52,7 +53,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UpdateTeams'
+              $ref: '#/components/schemas/UpdateTeam'
       responses:
         '200':
           description: List of updated teams
@@ -61,7 +62,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Book'
+                  $ref: '#/components/schemas/Team'
         '500':
           description: Internal server error
   /teams/{teamId}:
@@ -156,7 +157,7 @@ paths:
       operationId: deletePlayer
       parameters:
         - in: path
-          name: player
+          name: playerId
           schema:
             type: integer
           required: true
@@ -170,89 +171,89 @@ paths:
         '500':
           description: Internal server error
   /sponsors:
-     get:
-        tags:
-          - Sponsors
-        summary: get all sponsors
-        operationId: getSponsors
-        responses:
-          '200':
-            description: List of sponsors
-            content:
-              application/json:
-                schema:
-                  type: array
-                  items:
-                    $ref: '#/components/schemas/Sponsor'
-          '500':
-            description: Internal server error
-     post:
-        tags:
-          - Sponsors
-        summary: create new sponsors
-        operationId: createSponsors
-        requestBody:
+    get:
+      tags:
+        - Sponsors
+      summary: get all sponsors
+      operationId: getSponsors
+      responses:
+        '200':
+          description: List of sponsors
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/CreateSponsor'
-        responses:
-          '200':
-            description: List of created sponsors
-            content:
-              application/json:
-                schema:
-                  type: array
-                  items:
-                    $ref: '#/components/schemas/Sponsor'
-          '500':
-            description: Internal server error
-     put:
-        tags:
-          - Sponsors
-        summary: update some sponsors
-        operationId: updateSponsors
-        requestBody:
+                  $ref: '#/components/schemas/Sponsor'
+        '500':
+          description: Internal server error
+    post:
+      tags:
+        - Sponsors
+      summary: create new sponsors
+      operationId: createSponsors
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/CreateSponsor'
+      responses:
+        '200':
+          description: List of created sponsors
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/UpdateSponsor'
-        responses:
-          '200':
-            description: List of updated sponsors
-            content:
-              application/json:
-                schema:
-                  type: array
-                  items:
-                    $ref: '#/components/schemas/Sponsor'
-          '500':
-            description: Internal server error
+                  $ref: '#/components/schemas/Sponsor'
+        '500':
+          description: Internal server error
+    put:
+      tags:
+        - Sponsors
+      summary: update some sponsors
+      operationId: updateSponsors
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/UpdateSponsor'
+      responses:
+        '200':
+          description: List of updated sponsors
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Sponsor'
+        '500':
+          description: Internal server error
   /sponsors/{sponsorId}:
-      delete:
-          tags:
-            - Sponsors
-          summary: delete a specific sponsor
-          operationId: deleteSponsor
-          parameters:
-            - in: path
-              name: player
+    delete:
+      tags:
+        - Sponsors
+      summary: delete a specific sponsor
+      operationId: deleteSponsor
+      parameters:
+        - in: path
+          name: sponsorId
+          schema:
+            type: integer
+          required: true
+      responses:
+        '200':
+          description: Return the deleted sponsor
+          content:
+            application/json:
               schema:
-                type: integer
-              required: true
-          responses:
-            '200':
-              description: Return the deleted sponsor
-              content:
-                application/json:
-                  schema:
-                    $ref: '#/components/schemas/Sponsor'
-            '500':
-              description: Internal server error
+                $ref: '#/components/schemas/Sponsor'
+        '500':
+          description: Internal server error
   /matches:
     get:
       tags:
@@ -304,7 +305,7 @@ paths:
             schema:
               type: array
               items:
-                $ref: '#/components/schemas/UpdateMatches'
+                $ref: '#/components/schemas/UpdateMatch'
       responses:
         '200':
           description: List of updated matches
@@ -324,7 +325,7 @@ paths:
       operationId: deleteMatch
       parameters:
         - in: path
-          name: player
+          name: matchId
           schema:
             type: integer
           required: true
