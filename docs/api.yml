@@ -294,29 +294,7 @@ paths:
                   $ref: '#/components/schemas/Match'
         '500':
           description: Internal server error
-    put:
-      tags:
-        - Matches
-      summary: update some matches
-      operationId: updateMatches
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: array
-              items:
-                $ref: '#/components/schemas/UpdateMatch'
-      responses:
-        '200':
-          description: List of updated matches
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Match'
-        '500':
-          description: Internal server error
+    
   /match/{matchId}:
     delete:
       tags:
@@ -336,6 +314,23 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Match'
+        '500':
+          description: Internal server error
+  /scores:
+    get: 
+      tags:
+        - Scores 
+      summary: get a specific score 
+      operationId: getScore
+      responses:
+        '200':
+          description: List of Scores
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Score'
         '500':
           description: Internal server error
 components:
@@ -373,6 +368,9 @@ components:
       properties:
         name:
           type: string
+        role: 
+          allOf:
+            - $ref: '#/components/schemas/Role'
     Sponsor:
       type: object
       allOf:
@@ -391,14 +389,31 @@ components:
     Match:
       type: object
       allOf:
-        - $ref: "/components/schemas/UpdateMatch"
-    UpdateMatch:
-      allOf :
-        - $ref: "/components/schemas/CreateMatch"
+        - $ref: "#/components/schemas/CreateMatch"
     CreateMatch:
       type: object
       properties:
         dateTime:
           type: string
         stadium:
+          type: string
+    Score:
+      type: object
+      properties:
+        id: 
+          type: integer
+        minutes:
+          type: string
+        Player:
+          allOf:
+            - $ref: "#/components/schemas/Player"
+        team:
+          allOf:
+            - $ref: "#/components/schemas/Team"
+    Role: 
+      type: object
+      properties:
+        id: 
+          type: integer
+        name: 
           type: string
