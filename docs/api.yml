@@ -339,7 +339,8 @@ components:
       type: object
       properties:
         play_against:
-          type: string
+          allOf:
+            - $ref: '#/components/schemas/Match'
       allOf:
         - $ref: '#/components/schemas/UpdateTeam'
     UpdateTeam:
@@ -353,6 +354,9 @@ components:
       properties:
         name:
           type: string
+        sponsor: 
+          allOf:
+            - $ref: '#/components/schemas/Sponsor'
     Player:
       type: object
       allOf:
@@ -368,6 +372,9 @@ components:
       properties:
         name:
           type: string
+        team: 
+          allOf:
+            - $ref: '#/components/schemas/Team'
         role: 
           allOf:
             - $ref: '#/components/schemas/Role'
@@ -386,6 +393,9 @@ components:
       properties:
         name:
           type: string
+        team:
+          allOf:
+            - $ref: '#/components/schemas/Team'
     Match:
       type: object
       allOf:
@@ -397,6 +407,12 @@ components:
           type: string
         stadium:
           type: string
+        team_a:
+          allOf:
+            - $ref: '#/components/schemas/Team'
+        team_b:
+          allOf:
+            - $ref: '#/components/schemas/Team'
     Score:
       type: object
       properties:
