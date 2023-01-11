@@ -13,14 +13,14 @@ public class SponsorRestMapper {
         return SponsorResponse.builder()
                 .id(domain.getId())
                 .name(domain.getName())
-                .team((TeamEntity) domain.getTeam())
+                .teams((TeamEntity) domain.getTeams())
                 .build();
     }
 
     public SponsorEntity toDomain(CreateSponsorResponse rest){
         return SponsorEntity.builder()
                 .name(rest.getName())
-                .team(rest.getTeam())
+                .teams(rest.getTeam())
                 .build();
     }
 
@@ -28,7 +28,7 @@ public class SponsorRestMapper {
         return SponsorEntity.builder()
                 .id(rest.getId())
                 .name(rest.getName())
-                .team(rest.getTeam())
+                .teams(rest.getTeam())
                 .build();
     }
 }

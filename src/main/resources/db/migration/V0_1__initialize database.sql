@@ -1,1 +1,0 @@
-CREATE DATABASE prog3_td2;

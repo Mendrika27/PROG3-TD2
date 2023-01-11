@@ -24,12 +24,9 @@ public class TeamEntity {
     @OneToMany
     @JoinColumn(name = "player_id")
     @JsonIgnore
-    private List<PlayerEntity> player;
+    private List<PlayerEntity> players;
     @ManyToMany
     @JoinColumn(name = "sponsor_id")
-    private SponsorEntity sponsor;
-    @OneToOne
-    @JoinColumn(name = "opponent_id")
-    @Column(name = "opponent")
-    private TeamEntity opponent;
+    private List<SponsorEntity> sponsor;
+
 }

@@ -6,13 +6,13 @@ import lombok.Builder;
 import lombok.Data;
 
 import java.util.Date;
+import java.util.List;
 
 @AllArgsConstructor
 @Data
 @Builder
-public class PlayAgainstResponse {
-    private int  id;
+public class CreateMatchResponse {
     private Date dateTime;
-    private TeamEntity firstTeam;
-    private TeamEntity secondTeam;
+    private TeamResponse team_a;
+    private TeamResponse team_b;
 }

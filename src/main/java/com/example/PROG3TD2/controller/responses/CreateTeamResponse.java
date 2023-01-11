@@ -15,7 +15,6 @@ import java.util.List;
 public class CreateTeamResponse {
     private String name;
     private List<PlayerEntity> player;
-    private SponsorEntity sponsor;
-    private TeamEntity opponent;
+    private List<SponsorEntity> sponsor;
 
 }

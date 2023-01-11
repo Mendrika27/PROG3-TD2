@@ -3,8 +3,11 @@ package com.example.PROG3TD2.controller.mapper;
 import com.example.PROG3TD2.controller.responses.CreateTeamResponse;
 import com.example.PROG3TD2.controller.responses.TeamResponse;
 import com.example.PROG3TD2.controller.responses.UpdateTeamResponse;
+import com.example.PROG3TD2.model.SponsorEntity;
 import com.example.PROG3TD2.model.TeamEntity;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 @Component
 public class TeamRestMapper {
@@ -12,18 +15,16 @@ public class TeamRestMapper {
         return TeamResponse.builder()
                 .id(domain.getId())
                 .name(domain.getName())
-                .player(domain.getPlayer())
+                .players(domain.getPlayers())
                 .sponsor(domain.getSponsor())
-                .opponent(domain.getOpponent())
                 .build();
     }
 
     public TeamEntity todomain(CreateTeamResponse rest){
         return TeamEntity.builder()
                 .name(rest.getName())
-                .player(rest.getPlayer())
+                .players(rest.getPlayer())
                 .sponsor(rest.getSponsor())
-                .opponent(rest.getOpponent())
                 .build();
     }
 
@@ -32,9 +33,8 @@ public class TeamRestMapper {
         return TeamEntity.builder()
                 .id(rest.getId())
                 .name(rest.getName())
-                .player(rest.getPlayers())
-                .sponsor(rest.getSponsor())
-                .opponent(rest.getOpponent())
+                .players(rest.getPlayers())
+                .sponsor((List<SponsorEntity>) rest.getSponsor())
                 .build();
     }
 }

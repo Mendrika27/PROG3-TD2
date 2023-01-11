@@ -1,7 +1,7 @@
 package com.example.PROG3TD2.service;
 
-import com.example.PROG3TD2.model.PlayAgainstEntity;
-import com.example.PROG3TD2.repository.PlayAgainstRepository;
+import com.example.PROG3TD2.model.MatchEntity;
+import com.example.PROG3TD2.repository.MatchRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -12,22 +12,22 @@ import java.util.Optional;
 
 @Service
 @AllArgsConstructor
-public class PlayAgainstService {
-    private final PlayAgainstRepository repository;
+public class MatchService {
+    private final MatchRepository repository;
 
-    public List<PlayAgainstEntity> getMatches(){
+    public List<MatchEntity> getMatches(){
         return repository.findAll();
     }
-    public List<PlayAgainstEntity> createMatches(List<PlayAgainstEntity> toCreate){
+    public List<MatchEntity> createMatches(List<MatchEntity> toCreate){
         return repository.saveAll(toCreate);
     }
 
-    public List<PlayAgainstEntity> updateMatches(List<PlayAgainstEntity> toUpdate){
+    public List<MatchEntity> updateMatches(List<MatchEntity> toUpdate){
         return repository.saveAll(toUpdate);
     }
 
-    public PlayAgainstEntity deleteMatch(int matchId){
-        Optional<PlayAgainstEntity> optional = repository.findById(String.valueOf(matchId));
+    public MatchEntity deleteMatch(int matchId){
+        Optional<MatchEntity> optional = repository.findById(String.valueOf(matchId));
         if(optional.isPresent()){
             repository.delete(optional.get());
             return optional.get();
