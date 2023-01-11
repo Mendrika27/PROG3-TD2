@@ -413,6 +413,9 @@ components:
         team_b:
           allOf:
             - $ref: '#/components/schemas/Team'
+        score: 
+          allOf:
+            - $ref: '#/components/schemas/Score'
     Score:
       type: object
       properties:
