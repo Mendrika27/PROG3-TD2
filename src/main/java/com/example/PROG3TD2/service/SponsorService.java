@@ -19,21 +19,5 @@ public class SponsorService {
         return repository.findAll();
     }
 
-    public List<SponsorEntity> createSponsor(List<SponsorEntity> toCreate){
-        return repository.saveAll(toCreate);
-    }
 
-    public List<SponsorEntity> updateSponsor(List<SponsorEntity> toUpdate){
-        return repository.saveAll(toUpdate);
-    }
-
-    public SponsorEntity deleteSponsor(int sponsorId){
-        Optional<SponsorEntity> optional = repository.findById(String.valueOf(sponsorId));
-        if(optional.isPresent()){
-            repository.delete(optional.get());
-            return optional.get();
-        }else{
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Sponsor "+sponsorId+" not found");
-        }
-    }
 }

@@ -11,5 +11,4 @@ import lombok.Data;
 public class SponsorResponse {
     private int id;
     private String name;
-    private TeamEntity teams;
 }

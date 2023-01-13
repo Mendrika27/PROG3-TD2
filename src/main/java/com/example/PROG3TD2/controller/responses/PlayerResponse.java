@@ -12,4 +12,5 @@ public class PlayerResponse {
     private int id;
     private String name;
     private TeamEntity team;
+    private String post;
 }

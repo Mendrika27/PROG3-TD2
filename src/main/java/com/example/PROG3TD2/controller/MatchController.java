@@ -1,10 +1,7 @@
 package com.example.PROG3TD2.controller;
 
 import com.example.PROG3TD2.controller.mapper.MatchRestMapper;
-import com.example.PROG3TD2.controller.responses.CreateMatchResponse;
 import com.example.PROG3TD2.controller.responses.MatchResponse;
-import com.example.PROG3TD2.controller.responses.UpdateMatchResponse;
-import com.example.PROG3TD2.model.MatchEntity;
 import com.example.PROG3TD2.service.MatchService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;

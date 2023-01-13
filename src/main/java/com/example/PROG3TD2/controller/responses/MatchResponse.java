@@ -1,6 +1,5 @@
 package com.example.PROG3TD2.controller.responses;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,4 +15,7 @@ public class MatchResponse {
     private Date dateTime;
     private TeamResponse team_a;
     private TeamResponse team_b;
+    private List<ScoreResponse> scores;
+    private int scoreTeamA;
+    private  int scoreTeamB;
 }

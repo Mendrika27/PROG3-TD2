@@ -6,17 +6,22 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Entity
-@Table(name = "sponsor")
+@Table(name = "score")
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class SponsorEntity {
+public class ScoreEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String name;
+    @ManyToOne
+    @JoinColumn(name = "match_id")
+    private MatchEntity match;
+    private int times;
+    @ManyToOne
+    @JoinColumn(name = "player_id")
+    private PlayerEntity player;
+    private boolean isOS;
 }

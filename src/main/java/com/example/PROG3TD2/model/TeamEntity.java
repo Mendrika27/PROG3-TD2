@@ -21,12 +21,8 @@ public class TeamEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
-    @OneToMany
-    @JoinColumn(name = "player_id")
-    @JsonIgnore
-    private List<PlayerEntity> players;
     @ManyToMany
-    @JoinColumn(name = "sponsor_id")
+    @JoinTable(name = "team_sponsor", joinColumns = @JoinColumn(name = "team_id"), inverseJoinColumns = @JoinColumn(name = "sponsor_id"))
     private List<SponsorEntity> sponsor;
 
 }

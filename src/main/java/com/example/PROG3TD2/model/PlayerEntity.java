@@ -20,6 +20,7 @@ public class PlayerEntity {
     @Column(nullable = true)
     private int number;
     @ManyToOne
-    @JoinColumn(name = "team_entity_id")
-    private TeamEntity teamEntity;
+    @JoinColumn(name = "team_id")
+    private TeamEntity team;
+    private String poste;
 }

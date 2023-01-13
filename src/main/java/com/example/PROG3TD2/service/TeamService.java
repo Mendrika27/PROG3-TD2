@@ -21,22 +21,5 @@ public class TeamService {
         return repository.findAll();
     }
 
-    public List<TeamEntity> createTeams(List<TeamEntity> toCreate){
-        return repository.saveAll(toCreate);
-    }
 
-    public List<TeamEntity> updateTeams(List<TeamEntity> toUpdate){
-        return repository.saveAll(toUpdate);
-    }
-
-    public TeamEntity deleteTeams( int teamId){
-        Optional<TeamEntity> optional = repository.findById(String.valueOf(teamId));
-        if (optional.isPresent()){
-            repository.delete(optional.get());
-            return optional.get();
-        }else {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Team "+teamId+" not found");
-        }
-
-    }
 }

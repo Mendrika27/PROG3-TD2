@@ -19,21 +19,5 @@ public class PlayerService {
         return repository.findAll();
     }
 
-    public List<PlayerEntity> createPlayer(List<PlayerEntity> toCreate){
-        return repository.saveAll(toCreate);
-    }
 
-    public List<PlayerEntity> updatePlayer(List<PlayerEntity> toUpdate){
-        return repository.saveAll(toUpdate);
-    }
-
-    public PlayerEntity deletePlayer(int playerId){
-        Optional<PlayerEntity> optional = repository.findById(String.valueOf(playerId));
-        if (optional.isPresent()){
-            repository.delete(optional.get());
-            return optional.get();
-        }else {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Team "+playerId+" not found");
-        }
-    }
 }
